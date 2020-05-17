@@ -11,3 +11,5 @@ brew services start mongodb-community
 ```
 node rutas/api
 ```
+
+localhost:3000
