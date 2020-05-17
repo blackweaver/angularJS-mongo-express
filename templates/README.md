@@ -6,7 +6,7 @@
 brew services start mongodb-community
 ```
 
-## Ejecutar servidor local
+## Ejecutar servidor local 
 
 ```
 node rutas/api
