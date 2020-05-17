@@ -6,6 +6,12 @@
 brew services start mongodb-community
 ```
 
+Stop mongod
+
+```
+brew services stop --all
+```
+
 ## Ejecutar servidor local 
 
 ```
