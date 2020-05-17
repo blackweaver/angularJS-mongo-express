@@ -1,0 +1,56 @@
+<!-- Organización de estructura de columnas según angular material -->
+<div layout="row" layout-xs="column">
+  <div flex>
+  	<div flex-xs layout="column" layout-align="center center">
+			<!-- Imprimo una tarjeta por cada registro de la base de datos iterando el array posts en angular -->
+			<!-- Imprimo los resultados impares en la columna izquierda -->
+		<md-card ng-repeat="post in vm.posts | orderBy : '-_id'" ng-if="$odd" flex-gt-xs="40" style="max-width: 500px">
+			<!-- Imprimo cada uno de los datos en la etiqueta correspondiente, id, foto, autor, fecha, url, título y quote -->
+		<img ng-src="{{post.foto}}" class="md-card-image" alt="Washed Out">
+		<md-card-title>
+		  <md-card-title-text>
+		    <span class="md-headline">{{post.autor}}</span>
+		    <span class="md-subhead">{{post.fecha | date:'yyyy-MM-dd'}}</span>
+		  </md-card-title-text>
+		</md-card-title>
+		<md-card-content>
+			{{post.quote}}
+		</md-card-content>
+		<md-card-actions layout="row" layout-align="end center">
+			<a href="#!/post/{{post._id}}" class="md-button md-raised" lx-ripple>Leer más</a>
+			<!-- Voy hasta la ruta de edición pasando el ID correspondiente -->
+			<a href="#!/posts/edit/{{post._id}}" class="md-button md-raised" lx-ripple>Editar</a>
+			<!-- En el evento click llamo a la función encargada de pedir a la API el borrado de un registro -->
+		  <a ng-click="vm.removePost($event,post._id)" class="md-button md-raised" md-colors="{color: 'default-negro-500-1'}" lx-ripple>Eliminar</a>
+		</md-card-actions>
+
+		</md-card>
+	</div>
+  </div>
+  <div flex>
+  	<div flex-xs layout="column" layout-align="center center">
+			<!-- Imprimo los resultados pares en la columna derecha -->
+		<md-card ng-repeat="post in vm.posts | orderBy : '-_id'" ng-if="$even" flex-gt-xs="40" style="max-width: 500px">
+		<img ng-src="{{post.foto}}" class="md-card-image" alt="Washed Out">
+		<md-card-title>
+		  <md-card-title-text>
+		    <span class="md-headline">{{post.autor}}</span>
+		    <span class="md-subhead">{{post.fecha | date:'yyyy-MM-dd'}}</span>
+		  </md-card-title-text>
+		</md-card-title>
+		<md-card-content>
+			{{post.quote}}
+		</md-card-content>
+		<md-card-actions layout="row" layout-align="end center">
+			<!-- Botón que me permite ir a la ruta del controlador que muestra un quote -->
+			<a href="#!/post/{{post._id}}" class="md-button md-raised" lx-ripple>Leer más</a>
+			<!-- Botón que me permite ir a la ruta del controlador que edita un quote -->
+			<a href="#!/posts/edit/{{post._id}}" class="md-button md-raised" lx-ripple>Editar</a>
+			<!-- Botón con el evento click de angular que llama a la función que a la postre llama al método borrar de la API para borrar el registro -->
+		  <a ng-click="vm.removePost($event,post._id)" class="md-button md-raised" md-colors="{color: 'default-negro-500-1'}" lx-ripple>Eliminar</a>
+		</md-card-actions>
+
+		</md-card>
+	</div>
+  </div>
+</div>

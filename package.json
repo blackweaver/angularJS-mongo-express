@@ -1,0 +1,20 @@
+{
+  "name": "quotes",
+  "version": "1.0.0",
+  "description": "Aforismos de el gorrión",
+  "main": "api.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.1",
+    "mongoose": "^4.13.4",
+    "mongoose-create-or-update": "^1.0.3",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node api.js"
+  },
+  "author": "Ricardo Castillo",
+  "license": "ISC"
+}

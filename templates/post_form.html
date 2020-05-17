@@ -1,0 +1,82 @@
+<!-- Template con el formulario tanto para editar como para crear un nuevo post -->
+
+<!-- El submit llama a la función del controlador "savePost" -->
+<form ng-submit="vm.savePost()" name="formQuote">
+<div flex layout="column" layout-align="center center">
+  <div flex="auto">
+		
+		<md-card flex-gt-xs="60" style="max-width: 1024px">
+			<md-card-title>
+			  <md-card-title-text>
+					<!-- Emprimo la fecha y el título en las etiquetas correspondientes, una vez el controlador carga el objeto con los datos -->
+			  	<h1 class="md-display-3">{{vm.title}}</h1>
+			    <span class="md-subhead">{{vm.post.fecha | date:'yyyy-MM-dd'}}</span>
+			  </md-card-title-text>
+			</md-card-title>
+			<div layout="row" layout-xs="column">
+			  <div flex>
+			   <md-card-title-media style="float: left">
+					 <!-- Hago lo propio con la imagen del quote -->
+		        <img ng-src="{{vm.post.foto}}" class="md-card-image" alt="{{vm.post.autor}}" style="max-width: 100%; margin-right: 20px;">
+		    </md-card-title-media>
+			  </div>
+			  <div flex>
+			   <md-card-content>
+					 <!-- Creo input containers con cada uno de los elementos del quote especificando los name con los nombres de las propiedades, 
+						igual que en la base de datos y el ng-model de angular con el contenido -->
+						<!-- oninvalid y oninput son eventos que ejecutan funciones nativas con el objetivo de ocultar el msg: Please, fill out this field del navegador -->
+			  <md-input-container class="md-block" class="md-display-2">
+		        <label>Autor</label>
+						<input type="text"
+						name="autor"
+						ng-model="vm.post.autor"
+						minlength="5"
+						maxlength="20"
+						required oninvalid="this.setCustomValidity(' ')" oninput="this.setCustomValidity('')">
+						<!-- De existir algún error en la validación de angular, despliego mensajes según el tipo de error -->
+		        <div ng-messages="formQuote.autor.$error" style="color:maroon" role="alert">
+							<div ng-message="required">Debes colocar un nombre para el autor</div>
+							<div ng-message="minlength">El nombre es demasiado corto</div>
+							<div ng-message="maxlength">El nombre es demasiado largo</div>
+						</div>
+		      </md-input-container>
+
+		      <md-input-container class="md-block" class="md-subhead">
+		        <label>Sitio Web</label>
+		        <input md-no-asterisk name="url" ng-model="vm.post.url" oninvalid="this.setCustomValidity(' ')" oninput="this.setCustomValidity('')">
+		      </md-input-container>
+
+		      <md-input-container class="md-block" class="md-subhead">
+		        <label>Foto</label>
+		        <input md-no-asterisk md-no-asterisk name="foto" ng-model="vm.post.foto" oninvalid="this.setCustomValidity(' ')" oninput="this.setCustomValidity('')">
+		      </md-input-container>
+
+		      <md-input-container class="md-block" class="md-headline">
+		        <label>Quote</label>
+						<textarea 
+						name="quote" 
+						ng-model="vm.post.quote" 
+						minlength="5" 
+						maxlength="500" 
+						required oninvalid="this.setCustomValidity(' ')" oninput="this.setCustomValidity('')"></textarea>
+						<!-- De existir algún error en la validación de angular, despliego mensajes según el tipo de error -->
+		        <div ng-messages="formQuote.quote.$error" style="color:maroon" role="alert">
+								<div ng-message="required">Debes colocar una cita para el autor</div>
+								<div ng-message="minlength">La cita es demasiado corta</div>
+								<div ng-message="maxlength">La cita es demasiado larga</div>
+						</div>
+		      </md-input-container>
+
+		      <md-button type="submit" class="md-raised md-primary">Guardar</md-button>
+
+			</md-card-content>
+			  </div>
+			</div>
+			
+			</md-card>
+
+		  
+		
+	</div>
+</div>
+</form>

@@ -1,0 +1,20 @@
+<!-- Este template es simplemente para desplegar en una página independiente el quote seleccionado -->
+<div>
+    <div flex-xs layout="column" layout-align="center center">
+		<md-card flex-gt-xs="60" style="max-width: 1024px">
+		<md-card-title>
+			<!-- Imprimo cada una de las propiedades del objeto cargado por el controlador con la quote en cuesti´øn -->
+		  <md-card-title-text>
+		    <span class="md-display-3">{{vm.post.autor}}</span>
+		    <span class="md-subhead">{{vm.post.fecha | date:'yyyy-MM-dd'}}</span>
+		  </md-card-title-text>
+		</md-card-title>
+		<md-card-content class="md-display-1">
+			<md-card-title-media style="float: left">
+	        <img ng-src="{{vm.post.foto}}" class="md-card-image" alt="Washed Out" style="max-width: 400px; margin-right: 20px;">
+	      </md-card-title-media>
+		  <p>{{vm.post.quote}}</p>
+		</md-card-content>
+		</md-card>
+	</div>
+</div>
